@@ -74,3 +74,13 @@ h1 {
   content: 'X';
   color: #01a8c6;
 }
+
+/* 玩家提示 */
+.game-board.x .cell:hover::before {
+  content: 'X';
+  color: #d7d2cb;
+}
+.game-board.o .cell:hover::before {
+  content: 'O';
+  color: #d7d2cb;
+}
