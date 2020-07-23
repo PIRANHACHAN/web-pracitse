@@ -28,6 +28,7 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
+  margin: auto;
   background-color: rgba(69, 133, 136, 0.4);
   text-align: center;
 }
