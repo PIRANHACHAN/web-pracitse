@@ -46,23 +46,14 @@ const winsArr: number[][] = [
 
 // 判断是否获胜
 function judgeWin(player: Player): boolean {
-  let isWin = winsArr.some((ele) => {
-    let cellIndex1 = ele[0]
-    let cellIndex2 = ele[1]
-    let cellIndex3 = ele[2]
-
-    let cell1 = cells[cellIndex1]
-    let cell2 = cells[cellIndex2]
-    let cell3 = cells[cellIndex3]
-
+  return winsArr.some((ele) => {
     if (
-      cell1.classList.contains(player) &&
-      cell2.classList.contains(player) &&
-      cell3.classList.contains(player)
+      cells[ele[0]].classList.contains(player) &&
+      cells[ele[1]].classList.contains(player) &&
+      cells[ele[2]].classList.contains(player)
     ) {
       return true
     }
     return false
   })
-  return isWin
 }

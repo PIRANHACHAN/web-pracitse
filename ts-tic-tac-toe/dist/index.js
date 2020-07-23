@@ -7,7 +7,6 @@ var Player;
 })(Player || (Player = {}));
 var currentPlayer = Player.X;
 var cells = document.querySelectorAll('.cell');
-console.dir(cells[0]);
 // 获取游戏面板
 var gameBoard = document.querySelector('#board');
 cells.forEach(function (item) {
@@ -41,5 +40,12 @@ var winsArr = [
 ];
 // 判断是否获胜
 function judgeWin(player) {
-    return true;
+    return winsArr.some(function (ele) {
+        if (cells[ele[0]].classList.contains(player) &&
+            cells[ele[1]].classList.contains(player) &&
+            cells[ele[2]].classList.contains(player)) {
+            return true;
+        }
+        return false;
+    });
 }
