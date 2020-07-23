@@ -48,12 +48,17 @@ const winsArr: number[][] = [
 function judgeWin(player: Player): boolean {
   return winsArr.some((ele) => {
     if (
-      cells[ele[0]].classList.contains(player) &&
-      cells[ele[1]].classList.contains(player) &&
-      cells[ele[2]].classList.contains(player)
+      hasClass(cells[ele[0]], player) &&
+      hasClass(cells[ele[1]], player) &&
+      hasClass(cells[ele[2]], player)
     ) {
       return true
     }
     return false
   })
+}
+
+// 判断DOM元素是否包含某个类名
+function hasClass(ele: Element, className: string): boolean {
+  return ele.classList.contains(className)
 }

@@ -41,11 +41,15 @@ var winsArr = [
 // 判断是否获胜
 function judgeWin(player) {
     return winsArr.some(function (ele) {
-        if (cells[ele[0]].classList.contains(player) &&
-            cells[ele[1]].classList.contains(player) &&
-            cells[ele[2]].classList.contains(player)) {
+        if (hasClass(cells[ele[0]], player) &&
+            hasClass(cells[ele[1]], player) &&
+            hasClass(cells[ele[2]], player)) {
             return true;
         }
         return false;
     });
+}
+// 判断DOM元素是否包含某个类名
+function hasClass(ele, className) {
+    return ele.classList.contains(className);
 }
