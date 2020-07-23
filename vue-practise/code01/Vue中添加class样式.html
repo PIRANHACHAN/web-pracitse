@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <style type="text/css">
+      .red {
+        color: red;
+      }
+
+      .thin {
+        font-weight: 200;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      .active {
+        letter-spacing: 0.5em;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 直接传递一个数组 -->
+      <h1 :class="['red', 'thin']">超级大的H1，超级大</h1>
+      <!-- 使用三元表达式 -->
+      <h1 :class="['thin', 'italic', flag ? 'active' : '']">
+        超级大的H1，超级大
+      </h1>
+      <!-- 在数组中嵌套对象 -->
+      <h1 :class="['thin', 'italic', {'active': flag}]">超级大的H1，超级大</h1>
+      <!-- 直接使用对象 -->
+      <h1 :class="classObj">超级大的H1，超级大</h1>
+    </div>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          flag: true,
+          classObj: { red: true, italic: false, thin: true, active: false },
+        },
+        methods: {},
+      })
+    </script>
+  </body>
+</html>

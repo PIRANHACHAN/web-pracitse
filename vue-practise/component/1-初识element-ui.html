@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <el-rate v-model="value" show-text> </el-rate>
+      <br />
+      <hr />
+      <div class="block">
+        <span class="demonstration">默认</span>
+        <el-date-picker v-model="value1" type="date" placeholder="选择日期">
+        </el-date-picker>
+      </div>
+      <div class="block">
+        <span class="demonstration">默认</span>
+        <el-date-picker
+          v-model="value2"
+          type="datetime"
+          placeholder="选择日期时间"
+        >
+        </el-date-picker>
+      </div>
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/element-ui/lib/index.js"></script>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          value: null,
+          value1: '',
+          value2: '',
+        },
+      })
+    </script>
+  </body>
+</html>

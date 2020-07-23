@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <div id="add">
+      <button @click="countTimes">Add 1</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+    <div id="add-in">
+      <button @click="say('hi')">say hi</button>
+      <button @click="say('vue')">say vue</button>
+    </div>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#add',
+        data: {
+          counter: 0,
+        },
+        methods: {
+          countTimes: function () {
+            return (this.counter += 1)
+          },
+        },
+      })
+      var vm2 = new Vue({
+        el: '#add-in',
+        methods: {
+          say: function (str) {
+            alert(str)
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

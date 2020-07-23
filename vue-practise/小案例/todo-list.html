@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO LIST</title>
+    <style type="text/css">
+      .done {
+        text-decoration: line-through;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Todo</h1>
+      <p>
+        {{ todos.filter(item => !item.done).length }} of {{ todos.length }}
+        remaining [archive]
+      </p>
+      <p v-for="(item,index) in todos">
+        <input type="checkbox" v-model="item.done" />
+        <span :class="{done:item.done}">{{ item.title }}</span>
+        <button @click="handleRemoveTodoClick(index)">×</button>
+      </p>
+      <input
+        type="text"
+        v-model="todoText"
+        @keydown.enter="handleAddTodoClick
+      "
+      />
+      <button @click="handleAddTodoClick">Add</button>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      const todos = [
+        {
+          id: 1,
+          title: '吃饭',
+          done: true,
+        },
+        {
+          id: 2,
+          title: '睡觉',
+          done: false,
+        },
+        {
+          id: 3,
+          title: '看电视',
+          done: true,
+        },
+      ]
+
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          todos,
+          todoText: '',
+        },
+        methods: {
+          handleAddTodoClick() {
+            const todoText = this.todoText.trim()
+            if (!todoText.length) {
+              return
+            }
+            const _todos = this.todos
+            _todos.push({
+              id: _todos[_todos.length - 1].id + 1,
+              title: todoText,
+              done: false,
+            })
+            this.todoText = ''
+          },
+          handleRemoveTodoClick(index) {
+            console.log(index)
+
+            // this.todos.splice(index, 1)
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

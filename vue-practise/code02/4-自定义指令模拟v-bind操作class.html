@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <style>
+      .box {
+        background-color: yellow;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="checkbox" v-model="switchColor" />
+      <div v-my-bind:class="{box: switchColor}"></div>
+    </div>
+    <script src="./todomvc-vue/js/vue.js"></script>
+    <script>
+      //v-bind:class = "{}"
+      //v-bind:class = "xxx"
+      Vue.directive('my-bind', function (el, binding) {
+        if (binding.arg === 'class') {
+          console.log(binding.value)
+          for (let key in binding.value) {
+            if (binding.value[key]) {
+              el.classList.add(key)
+            } else {
+              el.classList.remove(key)
+            }
+          }
+        } else {
+          el.setAttribute(binding.arg, binding.value)
+        }
+      })
+
+      const app = new Vue({
+        el: '#app',
+        data: {
+          msg: 'hello',
+          switchColor: true,
+        },
+      })
+    </script>
+  </body>
+</html>

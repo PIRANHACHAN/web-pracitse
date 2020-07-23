@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+    <script type="text/javascript">
+      function showRandom() {
+        const num=parseInt(Math.random()*10+1);
+        //利用闭包产生多个相同的随机数
+        return function () {
+          console.log(num);
+        }
+      }
+      const ff=showRandom();
+      ff();
+      ff();
+      ff();
+      
+
+      
+      (function (){
+        a=10;
+      }());
+      console.log(a)
+    </script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="button" value="button" @click="flag=!flag" />
+
+      <!-- v-if：
+           进行DOM的删除或创建操作，有较高的切换性能消耗
+           如果元素可能不会被显示出来，推荐使用 -->
+      <!-- v-show：
+           加display:none ，有较高的初始渲染消耗
+           元素涉及频繁的切换，推荐使用 -->
+      <h3 v-if="flag">这是用v-if控制的元素</h3>
+      <h3 v-show="flag">这是用v-show控制的元素</h3>
+    </div>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          flag: true,
+        },
+        // methods: {
+        //     toggle() {
+        //         this.flag = !this.flag
+        //     }
+        // }
+      })
+    </script>
+  </body>
+</html>

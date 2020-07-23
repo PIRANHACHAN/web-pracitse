@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <!-- 单行文本 -->
+        <input type="text" v-model="singleMsg" placeholder="edit here" />
+        <p>Content is: {{ singleMsg }}</p>
+        <!-- 多行文本 -->
+        <textarea
+          type="text"
+          v-model="tribleMsg"
+          placeholder="edit here"
+        ></textarea>
+        <br />
+        <p style="white-space: pre-line;">
+          Content is:<br />
+          {{ tribleMsg }}
+        </p>
+      </div>
+      <div>
+        <!-- 复选框 -->
+        <input type="checkbox" id="aa" value="Aa" v-model="tribleBox" />
+        <label for="aa">Aa</label>
+        <input type="checkbox" id="bb" value="Bb" v-model="tribleBox" />
+        <label for="bb">Bb</label>
+        <input type="checkbox" id="cc" value="Cc" v-model="tribleBox" />
+        <label for="cc">Cc</label>
+        <br />
+        <span>Checked names: {{ tribleBox }}</span>
+      </div>
+      <br />
+      <div>
+        <!-- 单选按钮 -->
+        <input type="radio" id="one" value="One" v-model="picked" />
+        <label for="one">One</label>
+        <br />
+        <input type="radio" id="two" value="Two" v-model="picked" />
+        <label for="two">Two</label>
+        <br />
+        <span>Picked: {{ picked }}</span>
+      </div>
+      <br />
+      <div>
+        <!-- 单选下拉框 -->
+        <select v-model="selected">
+          <option disabled value="">请选择</option>
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <!-- 多选框 -->
+        <select v-model="Selected" multiple="">
+          <option disabled value="">请选择</option>
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+        <br />
+        <span>Selected: {{ Selected }}</span>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          singleMsg: '',
+          tribleMsg: '',
+          tribleBox: [],
+          picked: '',
+          selected: '',
+          Selected: [],
+        },
+      })
+    </script>
+  </body>
+</html>

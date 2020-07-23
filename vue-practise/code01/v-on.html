@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <style type="text/css">
+      .child {
+        margin-top: 10px;
+        width: 100px;
+        height: 40px;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-on:
+            绑定事件 -->
+      <button type="button" value="btn" @click="show">button</button>
+      <div class="child" @click="show2">
+        <a @click.stop.prevent="show" href="http://www.baidu.com">baidu</a>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+        // methods属性中定义了当前Vue实例中所有可用的方法
+        methods: {
+          show: function () {
+            // alert('hi vue')
+            console.log('1')
+          },
+          show2: function () {
+            console.log('2')
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

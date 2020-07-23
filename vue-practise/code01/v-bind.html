@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-bind:
+            Vue中提供用于绑定属性的指令，可以写合法的js表达式，可简写为“冒号：” -->
+      <!-- <button type="button" value="btn" v-bind:title="myTitle + '123'">button</button> -->
+      <button type="button" value="btn" :title="myTitle">button</button>
+    </div>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          myTitle: '自定义title',
+          // myTitle: '自定义title123',
+        },
+      })
+    </script>
+  </body>
+</html>

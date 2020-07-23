@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="obj">vue</div>
+    </div>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          obj: {
+            height: '200px',
+            width: '200px',
+            color: 'blue',
+            'background-color': 'red',
+          },
+        },
+      })
+    </script>
+
+    <style type="text/css"></style>
+  </body>
+</html>

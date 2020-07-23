@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css"></style>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div>{{ msg1 }}</div>
+      <!-- v-html:
+            html标签在渲染的时候被解析
+            区别：
+            {{message}}：
+            将数据解析为纯文本，不能输出真正的html，在页面加载时显示{{}}，所以通常使用v-html和v-text代替，且花括号方式在以后可能被取消
+            v-html="html"：
+            输出真正的html
+            v-text="text"：
+            将数据解析为纯文本，不能输出真正的html，与花括号的区别是在页面加载时不显示{{}} -->
+      <div v-html="msg2"></div>
+    </div>
+
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+
+    <script type="text/javascript">
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg1: '<h1>vue</h1>',
+          msg2: '<h1>vue</h1>',
+        },
+      })
+    </script>
+  </body>
+</html>

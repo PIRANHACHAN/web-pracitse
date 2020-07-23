@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script
+      src="../node_modules/vue/dist/vue.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <div id="component-demo">
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+    </div>
+
+    <script type="text/javascript">
+      Vue.component('button-counter', {
+        data: function () {
+          return {
+            count: 0,
+          }
+        },
+        methods: {
+          counter: function () {
+            return (this.count += 1)
+          },
+        },
+        template:
+          '<button @click="counter">You clicked me {{ count }} times.</button>',
+      })
+
+      new Vue({
+        el: '#component-demo',
+      })
+    </script>
+  </body>
+</html>

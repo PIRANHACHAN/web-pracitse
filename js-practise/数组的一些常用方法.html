@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+        <script type="text/javascript">
+            /* //修改器方法，会改变原数组的数组方法
+            const arr1 = [1, 2, 3];
+            console.log(arr1.push(1)); //返回数组长度
+            console.log(arr1);  //改变原数组，添加最后一个元素
+            
+            const arr2 = [1, 2, 3];
+            console.log(arr2.unshift(1)); //返回数组长度
+            console.log(arr2);  //改变原数组，添加第一个元素
+            
+            const arr3 = [1, 2, 3];
+            console.log(arr3.pop());  //无需参数，返回被删除的元素
+            console.log(arr3);  //改变原数组，删除最后一个元素
+            
+            const arr4 = [1, 2, 3];
+            console.log(arr4.shift());  //无需参数，返回被删除的元素
+            console.log(arr4);  //改变原数组，删除第一个元素
+            
+            const arr5 = [1, 4, 8];
+            console.log(arr5.splice(2, 1, 2, 3));  //返回被删除的元素
+            console.log(arr5);  //改变原数组，从任意位置添加或删除元素
+            
+            const arr6 = [1, 2, 3, 4];
+            console.log(arr6.copyWithin(1, 2, 3));  //返回新数组
+            console.log(arr6);  //改变原数组，浅复制数组的一部分到同一数组中的另一个位置
+            
+            const arr7 = new Array(5).fill(1);
+            console.log(arr7.fill('b', 1, 2));  //返回新数组
+            console.log(arr7);  //改变原数组，用指定值填充数组
+            
+            const arr8 = [1, 2, 3, 4, 5];
+            console.log(arr8.reverse());  //返回新数组
+            console.log(arr8);  //改变原数组，反转数组
+            
+            const arr9 = [5, 4, 3, 2, 1];
+            console.log(arr9.sort());  //返回新数组,按照转换为的字符串的各个字符的Unicode位点进行排序
+            console.log(arr9);  //改变原数组，sort()括号中可添加排序函数 */
+            
+            //访问方法，不会改变原数组的方法
+            const arr10 = [1, 2, 3];
+            console.log(arr10.concat([4, [5], {}]));  //返回新数组
+            console.log(arr10);  //原数组不变,在末尾添加元素，可以是数组、对象等
+            
+            const arr11 = [1, 2, 3, 4, 5];
+            console.log(arr11.slice(3));  //返回新数组
+            console.log(arr11);  //原数组不变，获取子数组
+            
+            //数组搜索
+            const arr12 = [1, 2, 3, 40, 5, 6, 2, 3, 4];
+            console.log(arr12.indexOf(2, 5));  //查找元素，返回索引值
+            console.log(arr12);  //原数组不变，可指定起始查找位置
+            console.log(arr12.lastIndexOf(5));  //从右往左查找元素，返回索引值
+
+            //迭代方法
+            //数组搜索
+            const arr13 = [{ id: 5, name: 'j'}, { id: 7, name: 'k'}];
+            console.log(arr13.findIndex((value, index, arr) => value.id === 5));  //返回索引值
+            console.log(arr13.findIndex((value, index, arr) => value.name === 'k'));  //返回索引值
+            console.log(arr13);  //原数组不变，不可指定起始查找位置
+            
+            const arr14 = [{ id: 5, name: 'j'}, { id: 7, name: 'k'}];
+            console.log(arr14.find((value, index, arr) => value.name === 'j'));  //返回元素
+            console.log(arr12.find((value, index) => index === 3));
+            //console.log(arr14);
+            
+            const arr15 = [5, 7, 12, 15, 17];
+            console.log(arr15.some((value, index) => value%2 === 0 ));
+            console.log(arr15.every(value => value%2 === 0));
+            
+            
+            //map：把元素转换成数组，合并数组
+            const items = ['Widget', 'Gadget'];
+            const prices = [11, 22];
+            //const cart = prices.map((value, index) => ({ name: items[index], price: prices[index]}));
+            const cart = items.map((value, index) => ({name: value, price: prices[index]}));
+            
+            const cards = [];
+            for(let suit of ['H', 'C', 'D', 'S']) {
+                for(let value = 1; value <= 13; value++) {
+                    cards.push({suit, value});
+                };
+            };
+            let a = cards.filter(c => c.value === 2);
+            
+            const array = [5, 7, 2, 4];
+            const sum = array.reduce((acc, value) => acc += value);
+            
+            const words = ['Beachball', 'Rodeo', 'Angel', 'Aardvark', 'Xylophone', 'November', 'Chocolate', 'Papaya', 'Uniform', 'Joker', 'Clover', 'Ball'];
+            const al = words.reduce((a, x) => {
+                if(!a[x[0]]) a[x[0]] = [];
+                a[x[0]].push(x);
+                return a;
+            }, {});
+            
+            const longWords = words.filter((value, index) => value.length>6)
+            
+        </script>
+	</body>
+</html>

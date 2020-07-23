@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+  </head>
+  <body>
+    <input type="button" name="" id="isName" value="按名字排序" />
+    <input type="button" name="" id="isSize" value="按大小排序" />
+    <input type="button" name="" id="isTime" value="按日期排序" />
+    <script type="text/javascript">
+      /* function f1(fn){
+        console.log('f1的函数');
+        fn();
+      }
+      f1(function (){
+        console.log('我是匿名函数');
+      });
+      
+      function f2(){
+        console.log('f2的函数');
+      }
+      f1(f2); */
+
+      /* const arr = [1, 3, 4, 23, 12, 534, 2, 32, 53, 11, 314];
+      //标准写法
+      arr.sort(function(a, b) {
+        if (a > b) {
+          return 1;
+        }
+        if (a == b) {
+          return 0;
+        }
+          return -1;
+      });
+      //arr.sort((a,b)=>a-b);  //升序
+      //arr.sort((b, a) => a - b); //降序
+      console.log(arr); */
+
+      function File(name, size, time) {
+        this.name = name;
+        this.size = size;
+        this.time = time;
+      }
+      const f1 = new File('jack.avi', '400M', '1997-12-12');
+      const f2 = new File('tom.avi', '200M', '2017-12-12');
+      const f3 = new File('xiaosu.avi', '800M', '2010-12-12');
+      const arr = [f1, f2, f3];
+
+      function fn(attr) {
+        return function getSort(a, b) {
+          if (a[attr] > b[attr]) {
+            return 1;
+          }
+          if (a[attr] == b[attr]) {
+            return 0;
+          }
+          return -1;
+        }
+      }
+      const ff = fn();
+      //console.log(fn(a))
+      //点击按钮排序，未实现
+      var attr = document.getElementById('isSize').onclick=function (){
+        return 'size';
+      };
+      
+      arr.sort(ff);
+      for (let i = 0; i < arr.length; i++) {
+        console.log(`${arr[i].name} - ${arr[i].size} - ${arr[i].time}`);
+      }
+    </script>
+  </body>
+</html>

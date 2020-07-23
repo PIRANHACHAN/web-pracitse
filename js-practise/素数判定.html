@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+        <script type="text/javascript">
+            /**
+             * @param {Object} num
+             */
+            function isPrimeNumber(num) {
+                for(let i = 2; i <= num-1; i++) {
+                    if(num % i == 0) 
+                        return `${num}不是素数。`;
+                }
+                return num+'不是素数。';
+            }
+            alert(isPrimeNumber(12));
+        </script>
+	</body>
+</html>

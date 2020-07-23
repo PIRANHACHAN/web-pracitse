@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /* function Person(name, age, sex) {
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+                this.eat = function() {
+                    console.log('haochi');
+                };
+            }
+            Person.prototype.sayHi = function() {
+                console.log('hi');
+            }
+            //构造继承
+            function Student(name, age, sex, score) {
+                Person.call(this, name, age, sex);
+                this.score = score;
+            }
+            //配合原型继承--->组合继承
+            Student.prototype = new Person(); //不传参
+            //可多继承，可向父类传递参数
+            const stu = new Student('john', 11, 'male', 113);
+            console.log(stu.name, stu.age, stu.sex, stu.score);
+            stu.eat();
+            stu.sayHi(); */
+
+      //原型继承，单继承，不可向父类传参
+      /* function Student(score) {
+          this.score = score;
+      } */
+      //改变原型指向方法1
+      //Student.prototype = new Person('xiaoming', 12, 'male');
+      //改变原型指向方法2
+      //Student.prototype = {};
+
+      //初始化实例对象
+      //const stu = new Student(100);
+      //修复构造函数的错误指向
+      //Student.prototype.constructor = Student;
+      //添加原型方法，添加到Person.prototype中
+      /* Student.prototype.sayOk = function() {
+          console.log('ok');
+      } */
+      'use strict';
+
+      function Person(age) {
+        this.age = age;
+      }
+      Person.prototype.sayHi = function(x, y) {
+        console.log(`hi: ${x + y}--${this.score}`);
+      }
+
+      function Student(age, score) {
+        Person.call(this, age);
+        this.score = score;
+      }
+      Student.prototype = new Person();
+      const per = new Person(10);
+      const stu = new Student(20, 120);
+      per.sayHi.call(stu, 1, 2);
+    </script>
+  </body>
+</html>

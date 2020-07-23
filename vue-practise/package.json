@@ -1,0 +1,18 @@
+{
+  "name": "Vue-Practice",
+  "version": "0.0.1",
+  "description": "一些vuejs小练习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^3.4.1",
+    "element-ui": "^2.13.2",
+    "vue": "^2.6.11"
+  }
+}

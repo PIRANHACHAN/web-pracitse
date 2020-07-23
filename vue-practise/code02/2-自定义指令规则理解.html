@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="checkbox" v-model="seen" />
+      <h1 v-if="seen" v-demo>
+        <span>{{ msg }}</span>
+      </h1>
+      <input type="text" v-model="msg" />
+      <div>
+        <h4>{{ foo }}</h4>
+        <input type="text" v-model="foo" />
+      </div>
+    </div>
+    <script src="./todomvc-vue/js/vue.js"></script>
+    <script>
+      Vue.directive('demo', {
+        //无法获取父元素
+        bind(el, binding) {
+          console.log('bind', el.parentNode)
+          el.timeId = setInterval(function () {
+            console.log(1)
+          }, 1000)
+        },
+        //可获取父元素
+        inserted(el, binding) {
+          console.log('inserted', el.parentNode)
+        },
+        //获取数据改变之前的视图内容
+        update(el, binding) {
+          console.log('update', el.innerHTML)
+        },
+        //获取数据改变之后的视图内容
+        componentUpdated(el, binding) {
+          console.log('componentUpdated', el.innerHTML)
+        },
+        //收尾工作，例如清除定时器
+        unbind(el, binding) {
+          console.log('unbind')
+          window.clearInterval(el.timeId)
+        },
+      })
+      //
+      const app = new Vue({
+        el: '#app',
+        data: {
+          msg: 'hello',
+          seen: true,
+          foo: 'bar',
+        },
+      })
+    </script>
+  </body>
+</html>
