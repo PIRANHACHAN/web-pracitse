@@ -5,14 +5,7 @@ var Player;
     Player["X"] = "x";
     Player["O"] = "o";
 })(Player || (Player = {}));
-var currentPlayer = Player.X;
-var cells = document.querySelectorAll('.cell');
-// 获取游戏面板
-var gameBoard = document.querySelector('#board');
-// 获胜信息面板
-var gameMessage = document.querySelector('#message');
-// 获胜者
-var winner = document.querySelector('#winner');
+var currentPlayer;
 // 获胜的8种情况
 var winsArr = [
     [0, 1, 2],
@@ -24,13 +17,36 @@ var winsArr = [
     [0, 4, 8],
     [2, 4, 6],
 ];
+// 单元格列表
+var cells = document.querySelectorAll('.cell');
+// 获取游戏面板
+var gameBoard = document.querySelector('#board');
+// 获胜信息面板
+var gameMessage = document.querySelector('#message');
+// 获胜者
+var winner = document.querySelector('#winner');
 // 记录下棋步数
-var steps = 0;
-// 遍历单元格数组，监听单击事件
-cells.forEach(function (item) {
-    var cell = item;
-    cell.addEventListener('click', handleCellClick, { once: true });
-});
+var steps;
+// 重新开始按钮
+var restart = document.querySelector('#restart');
+// 第一次游戏
+startGame();
+//重新开始游戏
+restart.addEventListener('click', startGame);
+// 初始化游戏界面
+function startGame() {
+    gameMessage.style.display = 'none';
+    steps = 0;
+    currentPlayer = Player.X;
+    gameBoard.classList.remove(Player.X, Player.O);
+    gameBoard.classList.add(Player.X);
+    cells.forEach(function (ele) {
+        var cell = ele;
+        cell.classList.remove(Player.X, Player.O);
+        cell.removeEventListener('click', handleCellClick);
+        cell.addEventListener('click', handleCellClick, { once: true });
+    });
+}
 // 棋盘中监听单元格单击事件的callback函数
 function handleCellClick(e) {
     var target = e.target;
@@ -55,7 +71,7 @@ function handleCellClick(e) {
     gameBoard.classList.remove(Player.X, Player.O);
     gameBoard.classList.add(currentPlayer);
 }
-// 判断获胜情况
+// 判断获胜情况(判赢函数)
 function judgeWin(player) {
     return winsArr.some(function (ele) {
         if (hasClass(cells[ele[0]], player) &&
@@ -70,4 +86,3 @@ function judgeWin(player) {
 function hasClass(ele, className) {
     return ele.classList.contains(className);
 }
-// 判断平局

@@ -3,16 +3,7 @@ enum Player {
   X = 'x',
   O = 'o',
 }
-let currentPlayer: Player = Player.X
-
-let cells = document.querySelectorAll('.cell')
-
-// 获取游戏面板
-let gameBoard = document.querySelector('#board') as HTMLDivElement
-// 获胜信息面板
-let gameMessage = document.querySelector('#message') as HTMLDivElement
-// 获胜者
-let winner = document.querySelector('#winner') as HTMLParagraphElement
+let currentPlayer: Player
 // 获胜的8种情况
 const winsArr: number[][] = [
   [0, 1, 2],
@@ -24,15 +15,40 @@ const winsArr: number[][] = [
   [0, 4, 8],
   [2, 4, 6],
 ]
-
+// 单元格列表
+let cells = document.querySelectorAll('.cell')
+// 获取游戏面板
+let gameBoard = document.querySelector('#board') as HTMLDivElement
+// 获胜信息面板
+let gameMessage = document.querySelector('#message') as HTMLDivElement
+// 获胜者
+let winner = document.querySelector('#winner') as HTMLParagraphElement
 // 记录下棋步数
-let steps: number = 0
+let steps: number
+// 重新开始按钮
+let restart = document.querySelector('#restart') as HTMLButtonElement
 
-// 遍历单元格数组，监听单击事件
-cells.forEach((item) => {
-  let cell = item as HTMLDivElement
-  cell.addEventListener('click', handleCellClick, { once: true })
-})
+// 第一次游戏
+startGame()
+
+//重新开始游戏
+restart.addEventListener('click', startGame)
+
+// 初始化游戏界面
+function startGame(): void {
+  gameMessage.style.display = 'none'
+  steps = 0
+  currentPlayer = Player.X
+  gameBoard.classList.remove(Player.X, Player.O)
+  gameBoard.classList.add(Player.X)
+
+  cells.forEach((ele) => {
+    let cell = ele as HTMLDivElement
+    cell.classList.remove(Player.X, Player.O)
+    cell.removeEventListener('click', handleCellClick)
+    cell.addEventListener('click', handleCellClick, { once: true })
+  })
+}
 
 // 棋盘中监听单元格单击事件的callback函数
 function handleCellClick(e: MouseEvent): void {
@@ -63,7 +79,7 @@ function handleCellClick(e: MouseEvent): void {
   gameBoard.classList.add(currentPlayer)
 }
 
-// 判断获胜情况
+// 判断获胜情况(判赢函数)
 function judgeWin(player: Player): boolean {
   return winsArr.some((ele) => {
     if (
@@ -81,5 +97,3 @@ function judgeWin(player: Player): boolean {
 function hasClass(ele: Element, className: string): boolean {
   return ele.classList.contains(className)
 }
-
-// 判断平局
